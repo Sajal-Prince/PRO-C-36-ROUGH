@@ -46,7 +46,7 @@ function draw() {
 background(46,139,87);
   foodObj.display();
  
-  fedTime=database.ref('FeedTime');
+  fedTime=database.ref('LastFeed');
   fedTime.on("value",function(data)
   { lastFed=data.val(); }); 
 
@@ -54,8 +54,8 @@ background(46,139,87);
 
   textSize(15); 
 
-  if(lastFed>=12){ text("Last Feed : "+ lastFed + " PM", 350,30); 
-  } else if(lastFed===0)
+  if(lastFed>=12){ text("Last Feed : "+ lastFed%12 + " PM", 350,30); 
+  } else if(lastFed==0)
   { text("Last Feed : 12 AM",350,30); 
   }else  { text("Last Feed : "+ lastFed + " AM", 350,30); } 
 
